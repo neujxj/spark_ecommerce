@@ -78,4 +78,27 @@ public class AdUserClickCountDAOImpl implements IAdUserClickCountDAO {
 		jdbcHelper.executeBatch(updateSql, updateParamList);
 	}
 
+	@Override
+	public long findClickCountByMultiKey(String date, long userId, long adId) {
+		String sql = "select click_count from ad_user_click_count where date = ? and user_id = ? and ad_id = ?";
+		Object[] params = new Object[] {
+			date, userId, adId
+		};
+		
+		final QueryResult queryResult = new QueryResult();
+		JDBCHelper.getInstance().executeQuery(sql, params, new QueryCallback() {
+			
+			@Override
+			public void process(ResultSet rs) throws Exception {
+				while (rs.next()) {
+					int clickCount = rs.getInt(1);
+					queryResult.setCount(clickCount);
+				}
+				
+			}
+		});
+		
+		return (long)queryResult.getCount();
+	}
+
 }

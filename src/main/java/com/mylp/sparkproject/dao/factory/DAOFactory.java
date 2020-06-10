@@ -1,5 +1,6 @@
 package com.mylp.sparkproject.dao.factory;
 
+import com.mylp.sparkproject.dao.IAdBlacklistDAO;
 import com.mylp.sparkproject.dao.IAdUserClickCountDAO;
 import com.mylp.sparkproject.dao.IAreaTop3ProductDAO;
 import com.mylp.sparkproject.dao.IPageSplitConvertRateDAO;
@@ -9,6 +10,7 @@ import com.mylp.sparkproject.dao.ISessionRandomExtractDAO;
 import com.mylp.sparkproject.dao.ITaskDAO;
 import com.mylp.sparkproject.dao.ITop10CategoryDAO;
 import com.mylp.sparkproject.dao.ITop10CategorySessionDAO;
+import com.mylp.sparkproject.dao.impl.AdBlacklistDAOImpl;
 import com.mylp.sparkproject.dao.impl.AdUserClickCountDAOImpl;
 import com.mylp.sparkproject.dao.impl.AreaTop3ProductDAOImpl;
 import com.mylp.sparkproject.dao.impl.PageSplitConvertRateDAOImpl;
@@ -59,5 +61,9 @@ public class DAOFactory {
 	
 	public static IAdUserClickCountDAO getAdUserClickCountDAO() {
 		return new AdUserClickCountDAOImpl();
+	}
+	
+	public static IAdBlacklistDAO getAdBlacklistDAO() {
+		return new AdBlacklistDAOImpl();
 	}
 }
